@@ -1,0 +1,69 @@
+<!-- Create a simple Program to build the Calculator in JavaScript using with HTML and CSS web languages. -->
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<title> Exchange Calculator </title>
+<style>
+*{
+	margin:10;
+	padding:0;
+	box-sizing: border-box;
+	align-items: center;
+
+							
+}
+.container{
+	width:350px;
+	height: 180px;
+	padding:70px;
+	background-color:#FFE338;
+	display: flex;
+	
+	
+}
+
+input{
+	width:100%;
+	height: 20px;	
+}
+	
+th{
+	background-color:#B2BEB5;
+}
+tr{
+	border-color:#B2BEB5;
+}
+</style>
+</head>
+<body>
+
+<div class ="container">
+
+<div >
+<table border ="1">
+<tr ><h3> Exchange Calculator </h3></tr>
+ <tr><th for ="Dollars">Dollars</th><th for ="Peros">Mexican Peros</th></tr>
+ <tr><td><input type ="number" id ="Dollars"/></td>
+ <td><input type ="number" id ="Peros"/></td></tr>
+</table>
+</div>
+</div>
+<script>
+
+let Dollars = document.getElementById('Dollars')
+let Peros = document.getElementById('Peros')
+	 
+	Dollars.onchange = () => {
+		let output = (parseFloat(Dollars.value)*19.8612);
+		Peros.value = parseFloat(output.toFixed(4));
+	}
+		Peros.onchange= () =>{
+		let output =(parseFloat(Peros.value)/19.8612);
+		Dollars.value = parseFloat(output.toFixed());
+	}
+
+
+</script>
+		
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <style>
+     td {width: 120px;};
+   </style>
+</head>
+
+<body>
+
+<h3>Table Celsius-Fahrenheit</h3>
+
+<form style="background-color:#FBD603; width: 15%; padding: 10px">
+    <label for="T1">Initial Celsius Temperature:</label>
+    <input style="margin: 10px;" type="number" value = '0' id="T1" name="T1"><br>
+    <label for="T2">Final Celsius Temperature:</label>
+    <input style="margin: 10px;" type="number" value = '100' id="T2" name="T2"><br>
+    <label for="T_inc">Increment of Temperature:</label>
+    <input style="margin: 10px;" type="number" value = '10' id="T_inc" name="T_inc"><br>
+    <button onclick="changeForm()" style="margin-left: 70px; margin-top: 20px;">Submit</button>
+</form>
+
+<br/>
+<div id="tableT"></div>
+
+<script>
+function toFarenheit(c1) {
+    return 1.8 * c1 + 32;
+}
+
+document.getElementById("tableT").innerHTML =
+`<table border=\"1\">\
+   <tr><th>Celsius</th><th>Fahrenheit</th></tr>\
+   <tr><td>${0}</td><td>${toFarenheit(0)}</td></tr>\
+ </table>`
+
+ function changeForm()
+ {
+    event.preventDefault();
+    var t1 = document.getElementById('T1').value;
+    var t2 = document.getElementById('T2').value;
+    var increment = Number(document.getElementById('T_inc').value);
+    
+    var difference;
+
+    var table = '<table border=\"1\"><tr style="background-color:#C0C0C0;"><th>Celsius</th><th>Fahrenheit</th></tr>';
+    var endTable = '</table>';
+    t1 = Number(t1);
+    t2 = Number(t2);
+
+    if(t1 < t2){
+        difference = t2 - t1;
+        var row;
+        var bg = true;
+
+        for(var x = 0; x <= difference; x=x+increment){
+            var tmp = t1 + x;
+            if(bg){
+                     row = `<tr><td>${tmp}</td><td>${toFarenheit(tmp)}</td></tr>`;
+                     bg=!bg;
+            }
+            else{
+                     row = `<tr style = "background-color:#C0C0C0;"><td>${tmp}</td><td>${toFarenheit(tmp)}</td></tr>`;
+                     bg=!bg;
+            }
+            table += row;
+        }
+        
+        table += endTable;
+        document.getElementById("tableT").innerHTML = table;
+    }
+ }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table{
+	padding: 20px;
+	border: 5px solid;
+	border-color:orange; 
+	background-color:#F5F5F5;
+
+}
+</style>
+</head>
+<body >
+<table style="">
+        <form name="f1" action="/action_page_post.php" method="post" onsubmit="return !!(matchpass() & validate_email());" class='pad'>
+            <tr>
+                <td>
+                    <label for="name">
+                        First Name
+                    </label>
+                </td>
+                </td>
+                <td><input type="text" id="name" required />
+                </td>
+            </tr>
+			 <tr>
+                <td>
+                    <label for="name">
+                       Last Name
+                    </label>
+                </td>
+                <td><input type="text" id="name"required />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="email">
+                        Email
+                    </label>
+                </td>
+                <td><input type="text" name="email"required />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="password">
+                       Type Password
+                    </label>
+                </td>
+                <td><input type="password" class="password"id="myInput"name="password"required />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="password">
+                        Re-Type Password
+                    </label>
+                </td>
+                <td><input type="password"class="password" id="myInput"name="password2"required />
+                </td>
+            </tr>
+			<tr>
+                <td>
+				<input type="checkbox" onchange="showpass(this)"> Show 
+				
+            </tr>
+			 <tr>
+                <td><input type="submit" value="Submit now">
+
+                </td>
+				<td>
+                  <input type="reset" value="Reset">
+                </td>
+            </tr>
+        </form>
+    </table>
+<script>
+function showpass(e) {
+  var list = document.getElementsByClassName('password');
+  for (let item of list) {
+    item.type = e.checked ? 'text' : 'password';
+  }
+  }
+
+
+function matchpass() {
+var firstpassword=document.f1.password.value;  
+var secondpassword=document.f1.password2.value;  
+if(firstpassword.length<9){
+  alert("password length at least eight symbols!");  
+  return false;  
+} 
+if(firstpassword==secondpassword){ 
+  alert("password is OK!");  
+  return true;  
+}  
+else{  
+  alert("password must be the same!");  
+  return false;  
+}
+}
+
+ function validate_email()  
+    {  
+    var x=document.f1.email.value;  
+    var atposition=x.indexOf("@");  
+    var dotposition=x.lastIndexOf(".");  
+    if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){  
+         alert("Please enter a valid e-mail address");  
+      return false;  
+      }  
+    }  
+</script>
+
+
+</body>
+</html>
+
